@@ -1,4 +1,5 @@
 {
+  "root": true,
   "env": {
     "browser": true,
     "node": true,
@@ -12,7 +13,8 @@
     "ecmaVersion": 8,
     "sourceType": "module",
     "ecmaFeatures": {
-      "jsx": true
+      "jsx": true,
+      "experimentalObjectRestSpread": true
     }
   },
   "extends": "standard",
@@ -20,9 +22,39 @@
     "react"
   ],
   "rules": {
+    "indent": ["error", 2, {"SwitchCase": 1}],
+    "id-blacklist": ["error", "e"],
+    "jsx-quotes": ["error", "prefer-single"],
     "quotes": ["error", "single"],
+    "no-var": "error",
     "react/jsx-uses-react": "error",
     "react/jsx-uses-vars": "error",
-    "no-var": "error"
+    "react/display-name": "error",
+    "react/jsx-boolean-value": ["error", "always"],
+    "react/jsx-closing-bracket-location": "error",
+    "react/jsx-curly-spacing": "error",
+    "react/jsx-equals-spacing": "error",
+    "react/jsx-filename-extension": ["error", {"extensions": [".js"]}],
+    "react/jsx-first-prop-new-line": ["error", "multiline"],
+    "react/jsx-handler-names": "error",
+    "react/jsx-indent": ["error", 2],
+    "react/jsx-indent-props": ["error", 2],
+    "react/jsx-max-props-per-line": ["error", {"maximum": 3}],
+    "react/jsx-no-comment-textnodes": "error",
+    "react/jsx-no-duplicate-props": "error",
+    "react/jsx-no-undef": "error",
+    "react/jsx-pascal-case": "error",
+    "react/jsx-space-before-closing": "error",
+    "react/jsx-uses-react": "error",
+    "react/jsx-uses-vars": "error",
+    "react/jsx-wrap-multilines": "error",
+    "react/no-danger": "error",
+    "react/no-deprecated": "error",
+    "react/no-did-mount-set-state": "error",
+    "react/no-did-update-set-state": "error",
+    "react/no-direct-mutation-state": "error",
+    "react/no-render-return-value": "error",
+    "react/no-is-mounted": "error",
+    "react/no-unknown-property": "error"
   }
 }

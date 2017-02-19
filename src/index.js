@@ -1,1 +1,1 @@
-index.js
+export Dropdown from './Dropdown'
