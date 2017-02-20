@@ -1,0 +1,30 @@
+.ripple-btn {
+  position: relative;
+  overflow: hidden;
+  button {
+    border: none;
+    outline:none;
+    cursor: pointer;
+    padding: 18px 60px;
+    border-radius: 2px;
+    font-size: 22px;
+    width: 100%;
+  }
+
+  .ripple-effect {
+    position: absolute;
+    pointer-events: none;
+    border-radius: 100%;
+    overflow: hidden;
+    opacity: .7;
+    animation: ripple-animation 900ms ease-out;
+  }
+
+
+  @keyframes ripple-animation {
+      100% {
+        transform: scale(2.5);
+        opacity: 0;
+      }
+  }
+}

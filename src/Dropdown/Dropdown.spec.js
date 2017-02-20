@@ -1,12 +1,12 @@
 import React from 'react'
 import sinon from 'sinon'
 import { expect } from 'chai'
-import { mount } from 'enzyme'
+import { shallow } from 'enzyme'
 import Dropdown from './Dropdown'
 
 describe('component: Dropdown', () => {
   it('component should render once', () => {
-    const wrapper = mount(<Dropdown />)
+    const wrapper = shallow(<Dropdown />)
     const instance = wrapper.instance()
     const didRender = sinon.spy(instance, 'render')
     instance.render()

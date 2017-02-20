@@ -1,8 +1,18 @@
 import React from 'react'
 import { storiesOf } from '@kadira/storybook'
-import Dropdown from '../src/Dropdown/Dropdown'
+import RippleButton from '../src/RippleButton/RippleButton'
 
-storiesOf('<Dropdown />', module)
-  .add('with text', () => (
-    <Dropdown />
+storiesOf('<RippleButton />', module)
+  .add('with label only', () => (
+    <RippleButton label='click me!' />
   ))
+  .add('with custom ripple color', () => (
+    <RippleButton label='click me!' rippleColor='red' />
+  ))
+  .add('inside container', () => {
+    return (
+      <div style={{position: 'relative', maxWidth: '240px'}}>
+        <RippleButton rippleColor='red' label='click me!' />
+      </div>
+    )
+  })
