@@ -9,7 +9,7 @@
     "test:watch": "mocha --watch --require ignore-styles --require config/tests/setup.js src/**/*.spec.js --compilers config/tests/compiler",
     "test:once": "mocha --require ignore-styles --require config/tests/setup.js src/**/*.spec.js --compilers config/tests/compiler",
     "lint": "eslint src config docs/src docs/config --quiet --cache && echo \"eslint: no lint errors\"",
-    "storybook": "start-storybook -p 6006",
+    "storybook": "start-storybook -p 3333",
     "build-storybook": "build-storybook"
   },
   "pre-commit": [

@@ -1,14 +1,14 @@
-.ripple-btn {
+.awsm-ripple-btn {
   position: relative;
   overflow: hidden;
   button {
     border: none;
     outline:none;
     cursor: pointer;
-    padding: 18px 60px;
     border-radius: 2px;
-    font-size: 22px;
     width: 100%;
+    padding: 0.8rem 1.8rem;
+    font-size: 1.5rem;
   }
 
   .ripple-effect {

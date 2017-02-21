@@ -16,3 +16,9 @@ storiesOf('<RippleButton />', module)
       </div>
     )
   })
+  .add('with custom styles', () => (
+    <RippleButton
+      label='click me!'
+      styles={{color: '#000', backgroundColor: '#ccc'}}
+    />
+  ))
