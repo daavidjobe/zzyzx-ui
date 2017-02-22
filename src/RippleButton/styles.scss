@@ -5,22 +5,18 @@
     border: none;
     outline:none;
     cursor: pointer;
-    border-radius: 2px;
     width: 100%;
     padding: 0.8rem 1.8rem;
     font-size: 1.5rem;
   }
-
   .ripple-effect {
     position: absolute;
     pointer-events: none;
     border-radius: 100%;
     overflow: hidden;
     opacity: .7;
-    animation: ripple-animation 900ms ease-out;
+    animation: ripple-animation 700ms ease-out;
   }
-
-
   @keyframes ripple-animation {
       100% {
         transform: scale(2.5);
