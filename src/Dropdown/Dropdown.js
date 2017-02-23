@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
 
-export default class Dropdown extends Component {
+export class Dropdown extends Component {
+
+  state = {
+    isOpen: false
+  }
 
   render () {
     return (

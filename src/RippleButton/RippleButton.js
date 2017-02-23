@@ -7,18 +7,18 @@ import './styles.scss'
 
 const ANIMATION_CLASS_NAME = 'ripple-effect'
 
-export default class RippleButton extends Component {
+export class RippleButton extends Component {
 
   static propTypes = {
     label: PropTypes.string.isRequired,
     rippleColor: PropTypes.string,
     styles: PropTypes.object,
-    onTap: PropTypes.func,
+    onClick: PropTypes.func,
     disabled: PropTypes.bool
   }
 
   static defaultProps = {
-    onTap: () => {},
+    onClick: () => {},
     type: 'button',
     rippleColor: '#fff',
     disabled: false
@@ -41,7 +41,7 @@ export default class RippleButton extends Component {
   handleClick = event => {
     this.ripple.classList.remove(ANIMATION_CLASS_NAME)
     makeRipple(event, this.ripple, ANIMATION_CLASS_NAME)
-    this.props.onTap(event)
+    this.props.onClick(event)
   }
 
   render () {

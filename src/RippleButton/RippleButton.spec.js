@@ -2,7 +2,7 @@ import React from 'react'
 import sinon from 'sinon'
 import { expect } from 'chai'
 import { shallow } from 'enzyme'
-import RippleButton from './RippleButton'
+import { RippleButton } from './RippleButton'
 
 const minProps = {
   label: 'click me!'
