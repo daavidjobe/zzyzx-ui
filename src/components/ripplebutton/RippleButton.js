@@ -1,16 +1,13 @@
 import React, { Component, PropTypes } from 'react'
-import { PRIMARY } from '../utils/colors'
-import { ANIMATION_END } from '../utils/events'
-import { makeRipple } from '../utils/utils'
+import { PRIMARY } from '../../utils/colors'
+import { ANIMATION_END } from '../../utils/events'
+import utils from '../../utils/utils'
 
 import './styles.scss'
-
-const ANIMATION_CLASS_NAME = 'ripple-effect'
 
 export class RippleButton extends Component {
 
   static propTypes = {
-    label: PropTypes.string.isRequired,
     rippleColor: PropTypes.string,
     styles: PropTypes.object,
     onClick: PropTypes.func,
@@ -36,19 +33,20 @@ export class RippleButton extends Component {
       this.animationEnd
     )
 
-  animationEnd = () => this.ripple.classList.remove(ANIMATION_CLASS_NAME)
-
   handleClick = event => {
-    this.ripple.classList.remove(ANIMATION_CLASS_NAME)
-    makeRipple(event, this.ripple, ANIMATION_CLASS_NAME)
+    this.ripple.classList.remove('ripple-effect')
+    utils.rippleEffect(event, this.btn, this.ripple)
     this.props.onClick(event)
   }
 
+  animationEnd = () => this.ripple.classList.remove('ripple-effect')
+
   render () {
-    const { type, styles, rippleColor, label, disabled } = this.props
+    const { type, styles, rippleColor, disabled } = this.props
     return (
       <div className='awsm-ripple-btn'>
         <button
+          ref={btn => { this.btn = btn }}
           type={type}
           disabled={disabled}
           onClick={this.handleClick}
@@ -58,7 +56,7 @@ export class RippleButton extends Component {
             ...styles
           }}
         >
-          {label}
+          {this.props.children}
         </button>
         <span
           style={{

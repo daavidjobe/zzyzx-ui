@@ -1,16 +1,23 @@
+export default (() => {
+  const asPixels = value => `${value}px`
 
-export const asPixels = value => `${value}px`
+  const rippleEffect = ({ clientX, clientY }, targetEl, rippleEl) => {
+    const {
+      height, width, top, left
+    } = targetEl.getBoundingClientRect()
 
-export const makeRipple = ({ target, clientX, clientY }, element, className) => {
-  const {
-    height, width, top, left
-  } = target.getBoundingClientRect()
+    Object.assign(rippleEl.style, {
+      top: asPixels(clientY - top - (height / 2)),
+      left: asPixels(clientX - left - (width / 2)),
+      height: asPixels(height),
+      width: asPixels(width)
+    })
+    rippleEl.classList.add('ripple-effect')
+  }
 
-  Object.assign(element.style, {
-    top: asPixels(clientY - top - (height / 2)),
-    left: asPixels(clientX - left - (width / 2)),
-    height: asPixels(height),
-    width: asPixels(width)
-  })
-  element.classList.add(className)
-}
+  return {
+    asPixels,
+    rippleEffect
+  }
+})()
+

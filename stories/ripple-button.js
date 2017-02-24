@@ -4,21 +4,20 @@ import { RippleButton } from '../src'
 
 storiesOf('<RippleButton />', module)
   .add('with label only', () => (
-    <RippleButton label='click me!' />
+    <RippleButton>click me!</RippleButton>
   ))
   .add('with custom ripple color', () => (
-    <RippleButton label='click me!' rippleColor='red' />
+    <RippleButton rippleColor='red'>click me!</RippleButton>
   ))
   .add('inside container', () => {
     return (
       <div style={{position: 'relative', maxWidth: '240px'}}>
-        <RippleButton rippleColor='red' label='click me!' />
+        <RippleButton rippleColor='red'>click me!</RippleButton>
       </div>
     )
   })
   .add('with custom styles', () => (
     <RippleButton
-      label='click me!'
       styles={{color: '#000', backgroundColor: '#ccc'}}
-    />
+    >CLICK ME!</RippleButton>
   ))

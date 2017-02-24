@@ -22,7 +22,6 @@
   "homepage": "https://bitbucket.org/daavidjobe/transportsedeln-web#readme",
   "devDependencies": {
     "@kadira/storybook": "^2.21.0",
-    "app-module-path": "^2.2.0",
     "babel-core": "^6.21.0",
     "babel-eslint": "^7.1.1",
     "babel-loader": "^6.3.2",
@@ -39,6 +38,7 @@
     "eslint-plugin-react": "^6.8.0",
     "eslint-plugin-standard": "^2.0.1",
     "ignore-styles": "^5.0.1",
+    "istanbul": "^0.4.5",
     "jsdom": "^9.9.1",
     "mocha": "^3.2.0",
     "node-sass": "^4.5.0",
