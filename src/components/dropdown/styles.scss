@@ -1,7 +1,18 @@
 .awsm-dropdown {
   max-width: 500px;
-  .awsm-ripple-btn button {
-    display: flex;
-    justify-content: space-between;
+  .awsm-ripple-btn {
+    button {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .arrow-down {
+        transform: translateY(5px) rotateX(180deg);
+        transition: transform 300ms ease;
+      }
+      .arrow-up {
+        transform: translateY(-3px) rotateX(360deg) scale(1.1);
+        transition: transform 300ms ease;
+      }
+    }
   }
 }
