@@ -3,6 +3,8 @@ import { RippleButton } from '../ripplebutton/RippleButton'
 import Arrow from '../arrow/Arrow'
 import './styles.scss'
 
+// TODO: Make items searchable
+
 export class Dropdown extends Component {
 
   state = {
@@ -12,7 +14,8 @@ export class Dropdown extends Component {
   static propTypes = {
     items: PropTypes.array,
     arrowColor: PropTypes.string,
-    elementCass: PropTypes.string
+    elementCass: PropTypes.string,
+    open: PropTypes.bool
   }
 
   static defaultProps = {
@@ -27,6 +30,12 @@ export class Dropdown extends Component {
 
   componentWillUnmount = () => {
     window.removeEventListener('click', this.close)
+  }
+
+  componentWillReceiveProps (newProps) {
+    if (newProps.open) {
+      this.setState({ isOpen: newProps.open })
+    }
   }
 
   close = event => {
