@@ -46,7 +46,6 @@ export class Dropdown extends Component {
     event.stopPropagation()
     const { isOpen } = this.state
     this.setState({ isOpen: !isOpen })
-    console.log('handelClick()')
   }
 
   handleMouseOver = () => {
