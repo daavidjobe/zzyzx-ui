@@ -18,30 +18,37 @@
     }
   }
   .dropdown-list {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
     overflow-y: scroll;
     background-color: #7d9dc9;
     color: #fff;
     max-height: 200px;
     transition: max-height 300ms ease-in-out;
     ul {
+      margin: 0 -15px;
       list-style: none;
       padding: 0;
       margin: 0.3rem 0 0.8rem 0;
+      transition: transform 300ms ease-in-out;
       li {
         padding: 0.8rem 1.8rem;
-        transition: transform 300ms ease-in-out;
       }
+    }
+    &::-webkit-scrollbar { 
+      display: none; 
     }
   }
   .slide-down {
     max-height: auto;
-    li {
+    ul {
       transform: translateY(10px);
     }
   }
   .slide-up {
     max-height: 0px;
-    li {
+    ul {
       transform: translateY(-10px);
     }
   }

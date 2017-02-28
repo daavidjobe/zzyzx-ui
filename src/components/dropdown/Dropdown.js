@@ -10,24 +10,63 @@ export class Dropdown extends Component {
   }
 
   static propTypes = {
+    items: PropTypes.array,
     arrowColor: PropTypes.string,
     elementCass: PropTypes.string
   }
 
   static defaultProps = {
+    items: [],
     arrowColor: '#fff',
     elementClass: ''
   }
 
-  handleClick = () => {
+  componentWillMount = () => {
+    window.addEventListener('click', this.close)
+  }
+
+  componentWillUnmount = () => {
+    window.removeEventListener('click', this.close)
+  }
+
+  close = event => {
+    if (!this.hovering) {
+      this.setState({ isOpen: false })
+    }
+  }
+
+  handleKeyDown = ({ key }) => {
+    if (key === 'Escape') {
+      this.hovering = false
+      this.close()
+    }
+  }
+
+  handleClick = event => {
+    event.stopPropagation()
     const { isOpen } = this.state
     this.setState({ isOpen: !isOpen })
+    console.log('handelClick()')
+  }
+
+  handleMouseOver = () => {
+    this.hovering = true
+  }
+
+  handleMouseLeave = () => {
+    this.hovering = false
   }
 
   render () {
     const { isOpen } = this.state
+    const { items } = this.props
     return (
-      <div className={`awsm-dropdown ${this.props.elementCass}`}>
+      <div
+        onKeyDown={this.handleKeyDown}
+        onMouseOver={this.handleMouseOver}
+        onMouseLeave={this.handleMouseLeave}
+        className={`awsm-dropdown ${this.props.elementCass}`}
+      >
         <div className='dropdown-btn'>
           <RippleButton onClick={this.handleClick}>
             <div>Dropdown</div>
@@ -40,13 +79,7 @@ export class Dropdown extends Component {
         </div>
         <div className={`dropdown-list ${isOpen ? 'slide-down' : 'slide-up'}`}>
           <ul>
-            <li>item1</li>
-            <li>item2</li>
-            <li>item3</li>
-            <li>item3</li>
-            <li>item3</li>
-            <li>item3</li>
-            <li>item3</li>
+            { items.map((item, index) => <li key={index}>{item}</li>) }
           </ul>
         </div>
       </div>

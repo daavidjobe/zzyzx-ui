@@ -4,6 +4,10 @@ import { expect } from 'chai'
 import { shallow } from 'enzyme'
 import { Dropdown } from './Dropdown'
 
+const clickMock = {
+  stopPropagation: () => {}
+}
+
 describe('<Dropdown />', () => {
   it('should render once', () => {
     const wrapper = shallow(<Dropdown />)
@@ -21,7 +25,7 @@ describe('<Dropdown />', () => {
     const wrapper = shallow(<Dropdown />)
     let arrowClass = wrapper.find('Arrow').prop('elementClass')
     expect(arrowClass).to.equal('arrow-down')
-    wrapper.find('RippleButton').simulate('click')
+    wrapper.find('RippleButton').simulate('click', clickMock)
     arrowClass = wrapper.find('Arrow').prop('elementClass')
     expect(arrowClass).to.equal('arrow-up')
     expect(wrapper.state().isOpen).to.equal(true)
