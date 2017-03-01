@@ -14,6 +14,12 @@ const items2 = [
   <RippleButton>item3</RippleButton>
 ]
 
+const items3 = [
+  <RippleButton>home</RippleButton>,
+  <RippleButton>about</RippleButton>,
+  <RippleButton>contact</RippleButton>
+]
+
 storiesOf('<Dropdown />', module)
   .add('simple dropdown', () => (
     <Dropdown items={items} />
@@ -29,4 +35,7 @@ storiesOf('<Dropdown />', module)
   ))
   .add('open as default', () => (
     <Dropdown items={items2} open={true} />
+  ))
+  .add('is searchable', () => (
+    <Dropdown searchable={true} items={items3} />
   ))

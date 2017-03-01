@@ -8,20 +8,25 @@ import './styles.scss'
 export class Dropdown extends Component {
 
   state = {
-    isOpen: false
+    isOpen: false,
+    search: ''
   }
 
   static propTypes = {
     items: PropTypes.array,
     arrowColor: PropTypes.string,
     elementCass: PropTypes.string,
-    open: PropTypes.bool
+    open: PropTypes.bool,
+    label: PropTypes.string,
+    searchable: PropTypes.bool
   }
 
   static defaultProps = {
     items: [],
     arrowColor: '#fff',
-    elementClass: ''
+    elementClass: '',
+    label: 'Dropdown',
+    searchable: false
   }
 
   componentWillMount = () => {
@@ -40,7 +45,10 @@ export class Dropdown extends Component {
 
   close = event => {
     if (!this.hovering) {
-      this.setState({ isOpen: false })
+      this.setState({
+        isOpen: false,
+        search: ''
+      })
     }
   }
 
@@ -49,12 +57,18 @@ export class Dropdown extends Component {
       this.hovering = false
       this.close()
     }
+    if (this.state.isOpen && this.props.searchable) {
+      this.searchInput.focus()
+    }
   }
 
   handleClick = event => {
     event.stopPropagation()
     const { isOpen } = this.state
-    this.setState({ isOpen: !isOpen })
+    this.setState({
+      isOpen: !isOpen,
+      search: ''
+    })
   }
 
   handleMouseOver = () => {
@@ -65,9 +79,42 @@ export class Dropdown extends Component {
     this.hovering = false
   }
 
+  handleSearch = ({ target }) => {
+    this.setState({ search: target.value })
+  }
+
+  renderLabel = (searchable, isOpen) => {
+    if (isOpen && searchable) {
+      return (
+        <input
+          onChange={this.handleSearch}
+          type='text'
+          ref={searchInput => { this.searchInput = searchInput }}
+        />
+      )
+    } else {
+      return <div>{this.props.label}</div>
+    }
+  }
+
+  renderItems = items => {
+    const results = []
+    if (items) {
+      items.forEach((item, index) => {
+        const value = item.props.children
+        if (value.startsWith(this.state.search)) {
+          results.unshift(<li key={index}>{item}</li>)
+        } else {
+          results.push(<li key={index}>{item}</li>)
+        }
+      })
+    }
+    return results
+  }
+
   render () {
     const { isOpen } = this.state
-    const { items } = this.props
+    const { searchable, items } = this.props
     return (
       <div
         onKeyDown={this.handleKeyDown}
@@ -77,7 +124,7 @@ export class Dropdown extends Component {
       >
         <div className='dropdown-btn'>
           <RippleButton onClick={this.handleClick}>
-            <div>Dropdown</div>
+            {this.renderLabel(searchable, isOpen)}
             <Arrow
               elementClass={`arrow-${isOpen ? 'up' : 'down'}`}
               width={25}
@@ -87,7 +134,7 @@ export class Dropdown extends Component {
         </div>
         <div className={`dropdown-list ${isOpen ? 'slide-down' : 'slide-up'}`}>
           <ul>
-            { items.map((item, index) => <li key={index}>{item}</li>) }
+            {this.renderItems(items)}
           </ul>
         </div>
       </div>
