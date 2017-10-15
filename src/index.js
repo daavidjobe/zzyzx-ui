@@ -1,2 +1,4 @@
-export { Dropdown } from './components/dropdown/Dropdown'
-export { RippleButton } from './components/ripplebutton/RippleButton'
+// Modules
+
+export { default as Test } from './modules/Test/Test'
+
